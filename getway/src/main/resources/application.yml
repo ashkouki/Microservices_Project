@@ -1,0 +1,33 @@
+server:
+  port: 9999
+eureka:
+  client:
+    register-with-eureka: false
+spring:
+  application:
+    name: apigetway
+  config:
+    import: optional:configserver:http://localhost:8888
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: students
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/v1/student/**
+        - id: schools
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/v1/School/**
+
+
+
+public final class ErrorContext{
+
+private String topic;
+Private String meessageKey;
+
+}
